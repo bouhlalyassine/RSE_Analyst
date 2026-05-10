@@ -1,0 +1,24 @@
+cookie:
+  expiry_days: 30
+  key: GES_E_key
+  name: GES_E_cookie_name
+credentials:
+  usernames:
+    Admin:
+      name: Admin
+      password: $2b$12$1Ef4JzW8oXlVkgd2wPMom.rkQhkrqZxr1atGJMeCOgsZEpWEkHU0G
+    aamraoui:
+      name: Amraoui Amine
+      password: $2b$12$nN0wK/uCmGt8dAJNtDuVWe7F8vmMit0Em95kiTwVzozRe16byN5au
+    bbennis:
+      name: Bennis Badr
+      password: $2b$12$9JOBaUxPLf7Nb48XrSMlh.BvSf03YappVn0GYxU7Vo8erOzZ2mCCa
+    guest:
+      name: guest
+      password: $2b$12$lngqKmb.vn8wlDY9whMd4..dPUH7FoWjLKNBgKMbhpPpsRKSmQnxa
+    ybouhlal:
+      name: Bouhlal Yassine
+      password: $2b$12$G0eCThBmRF2IzU1rxUj3bez.7pMasE2CnhKPELjAg7G2O2YB1OJ5a
+preauthorized:
+  emails:
+  - None@nonemail.com

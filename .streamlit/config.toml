@@ -1,0 +1,33 @@
+[theme]
+# Primary accent color for interactive elements.
+primaryColor = "#0c3994"
+
+# Background color for the main content area.
+backgroundColor = "#F3F3F3"
+
+# Background color used for the sidebar and most interactive widgets.
+secondaryBackgroundColor = "#B5B5B5"
+
+# Color used for almost all text.
+textColor = "#000000"
+
+# Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
+# Default: "sans serif"
+font = "sans serif"
+
+
+
+
+
+[client]
+# Change the visibility of items in the toolbar, options menu, and settings dialog (top right of the app).
+
+# Allowed values:
+# "auto" : Show the developer options if the app is accessed through localhost and hide them otherwise.
+# "developer" : Show the developer options.
+# "viewer" : Hide the developer options.
+# "minimal" : Show only options set externally (e.g. through Streamlit Community Cloud) or through st.set_page_config. If there are no options left, hide the menu.
+
+# Default: "auto"
+
+toolbarMode = "auto"

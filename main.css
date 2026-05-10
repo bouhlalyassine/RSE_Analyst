@@ -1,0 +1,204 @@
+hr {/* Remove the extra space after the devider*/
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+p{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+ul {/* Remove the bullet points*/
+    list-style-type: none;
+}
+
+.thick-divider {
+    border-top: 0.7px solid #000000; /* Adjust the thickness and color */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.thick-divider-NEWS {
+    border-top: 0.7px solid #c2c2c2;
+    margin-top: 8px;
+    margin-bottom: 17px;
+}
+
+.thick-divider-AI {
+    border-top: 0.7px solid #000000; /* Adjust the thickness and color */
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.thick-divider-MODIFS {
+    border-top: 0.7px solid #000000; /* Adjust the thickness and color */
+    margin-top: 9px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.vertical-divider {
+    border-left: 0.7px solid rgba(0, 0, 0);
+    height: 80px;
+    margin: auto;
+}
+
+
+/*######################################################################################*/
+
+
+div[data-testid="stMarkdownContainer"] {
+    text-align: center;
+    line-height: 28px;
+}
+
+
+/*######################################################################################*/
+
+
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+section[data-testid="stSidebar"] { width: 340px;}
+
+
+/*######################################################################################*/
+
+
+/* Espace Main Screen (haut, droite, gauche)*/
+.st-emotion-cache-zy6yx3  {
+    padding : 0rem 3rem 0rem
+}
+
+
+/*######################################################################################*/
+
+
+/* Espace Sidebar */
+.st-emotion-cache-1echtaq {
+    padding: 0rem 0rem 0rem ;
+} 
+
+
+/*######################################################################################*/
+
+
+/* Hide Navigation Menu (pages) */
+div[data-testid="stSidebarNav"] {
+    display: none;
+    visibility: collapse;
+}
+
+
+/*######################################################################################*/
+
+
+/* Tabs */
+div[data-baseweb="tab-list"]{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+  
+div[data-baseweb="tab-list"] p {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/*######################################################################################*/
+
+
+/* Page link "Home" */
+.st-emotion-cache-1wblzah {
+    display: flex;
+    justify-content: center;
+}
+
+.st-emotion-cache-1wblzah p {
+    font-size: 30px;
+    font-family: "Comic Sans MS";
+    color:#0d3894
+}
+
+/*######################################################################################*/
+
+
+/* Page link "Enjeux RSE / Sources / AI Agents" */
+.st-emotion-cache-48spen {
+    display: flex;
+    justify-content: center;
+}
+
+.st-emotion-cache-48spen p{
+    font-size: 30px;
+    font-family: "Comic Sans MS";
+    color:#0d3894
+}
+
+
+
+/*######################################################################################*/
+
+
+/* Button "App Updates" */
+.st-emotion-cache-1n6tfoc {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+
+/*######################################################################################*/
+
+
+/* Toggle Button */
+div[data-testid="stCheckbox"] {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/*######################################################################################*/
+
+ 
+/* Button sidebar intérieur*/
+div[data-testid="stSidebarCollapseButton"] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+button[data-testid="stBaseButton-headerNoPadding"]{
+    display: block !important;
+    background-color: #6ab3d8 !important;
+    padding: 10px 10px !important;
+}
+
+
+/*######################################################################################*/
+
+
+/* Button sidebar extérieur*/
+button[data-testid="stExpandSidebarButton"]{
+    background-color: #6ab3d8 !important;
+    padding: 10px 10px !important;
+    visibility: visible !important;
+}
+
+
+/*######################################################################################*/
+
+
+/* Styles spécifiques aux téléphones */
+@media only screen and (max-width: 768px) {
+
+    /* desactivate clickable elements when sidebar is open */
+    section[data-testid="stSidebar"][aria-expanded="true"] ~ * a,
+    section[data-testid="stSidebar"][aria-expanded="true"] ~ * .noclick-phone, 
+    section[data-testid="stSidebar"][aria-expanded="true"] ~ * button
+    {
+      pointer-events: none;
+    }
+}
