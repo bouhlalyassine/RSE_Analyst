@@ -4,8 +4,12 @@
 
 import pandas as pd
 import streamlit as st
-from pandasai import Agent
 from streamlit_lottie import st_lottie
+
+try:
+    from pandasai import Agent
+except ImportError:
+    Agent = None
 
 from Settings import require_authenticated_user, load_lottiefile, lottie_robot
 from Settings import (
@@ -181,37 +185,50 @@ if get_answer_toggle:
                         st.exception(exc)
                         st.stop()
                 else:
-                    llm_candidates = build_rse_analyst_llms(RSE_ANALYST_TEMPERATURE, RSE_ANALYST_MAX_TOKENS)
-                    if not llm_candidates:
-                        st.error("Aucune cle API disponible pour RSE Analyst. Ajoutez GROQ_API_KEY ou MISTRAL_API_KEY dans les secrets Streamlit.")
-                        st.stop()
-
-                    last_error = None
-                    for llm_name, llm in llm_candidates:
+                    if Agent is None:
                         try:
-                            st.session_state.agent = Agent(
-                                [main_energie_df],
-                                config={
-                                    "llm": llm,
-                                    "save_logs": False,
-                                    "save_charts": True,
-                                    "enable_cache": False,
-                                    "max_retries": 3,
-                                    "response_parser": the_StreamlitResponse,
-                                },
-                                memory_size=10,
+                            st.session_state.AI_Answer = run_structured_rse_analyst(
+                                main_energie_df,
+                                query,
                             )
-                            st.session_state.AI_Answer = st.session_state.agent.chat(RSE_ANALYST_SYSTEM_PROMPT + query)
-                            st.session_state.RSE_Analyst_LLM = llm_name
-                            last_error = None
-                            break
+                            st.session_state.RSE_Analyst_LLM = "Moteur pandas local"
+                            st.session_state.RSE_Analyst_Used_Structured = True
                         except Exception as exc:
-                            last_error = exc
+                            st.error("RSE Analyst n'a pas pu produire l'analyse structuree.")
+                            st.exception(exc)
+                            st.stop()
+                    else:
+                        llm_candidates = build_rse_analyst_llms(RSE_ANALYST_TEMPERATURE, RSE_ANALYST_MAX_TOKENS)
+                        if not llm_candidates:
+                            st.error("Aucune cle API disponible pour RSE Analyst. Ajoutez GROQ_API_KEY ou MISTRAL_API_KEY dans les secrets Streamlit.")
+                            st.stop()
 
-                    if last_error is not None:
-                        st.error("RSE Analyst n'a pas pu generer de reponse avec les modeles disponibles.")
-                        st.exception(last_error)
-                        st.stop()
+                        last_error = None
+                        for llm_name, llm in llm_candidates:
+                            try:
+                                st.session_state.agent = Agent(
+                                    [main_energie_df],
+                                    config={
+                                        "llm": llm,
+                                        "save_logs": False,
+                                        "save_charts": True,
+                                        "enable_cache": False,
+                                        "max_retries": 3,
+                                        "response_parser": the_StreamlitResponse,
+                                    },
+                                    memory_size=10,
+                                )
+                                st.session_state.AI_Answer = st.session_state.agent.chat(RSE_ANALYST_SYSTEM_PROMPT + query)
+                                st.session_state.RSE_Analyst_LLM = llm_name
+                                last_error = None
+                                break
+                            except Exception as exc:
+                                last_error = exc
+
+                        if last_error is not None:
+                            st.error("RSE Analyst n'a pas pu generer de reponse avec les modeles disponibles.")
+                            st.exception(last_error)
+                            st.stop()
 
         st.session_state.query = query
 

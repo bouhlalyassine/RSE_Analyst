@@ -1,19 +1,15 @@
-# Streamlit Community Cloud: deploy with Python 3.10 or 3.11.
-# pandasai 2.4.2 pins pandas 1.5.3, which is not reliable on newer Python versions.
-streamlit==1.53.0
-pandas==1.5.3
-numpy==1.26.4
-matplotlib==3.10.9
-
-pandasai==2.4.2
-langchain-groq==0.2.4
-groq==0.17.0
-langchain-mistralai==0.2.6
+# Minimal Streamlit Cloud dependencies.
+# pandasai is intentionally not installed here: it pulls torch and pins old pandas,
+# which often breaks dependency installation on Streamlit Community Cloud.
+streamlit>=1.50,<2
+pandas>=2.2,<3
+numpy>=1.26,<3
+matplotlib>=3.9,<4
 
 st-gsheets-connection==0.1.0
 streamlit-authenticator==0.2.2
 streamlit-lottie==0.0.3
 
-openpyxl==3.1.2
-PyYAML==6.0.1
-requests==2.32.3
+openpyxl>=3.1,<4
+PyYAML>=6.0.2,<7
+requests>=2.32,<3

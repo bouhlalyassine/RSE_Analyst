@@ -16,10 +16,24 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import streamlit as st
-from langchain_groq import ChatGroq
-from langchain_mistralai import ChatMistralAI
-from pandasai.responses.response_parser import ResponseParser
 from streamlit_gsheets import GSheetsConnection
+
+try:
+    from langchain_groq import ChatGroq
+except ImportError:
+    ChatGroq = None
+
+try:
+    from langchain_mistralai import ChatMistralAI
+except ImportError:
+    ChatMistralAI = None
+
+try:
+    from pandasai.responses.response_parser import ResponseParser
+except ImportError:
+    class ResponseParser:
+        def __init__(self, context=None) -> None:
+            self.context = context
 
 from rse_analyst_engine import (
     RSEAnalysisResult,
@@ -313,7 +327,7 @@ def load_rse_analyst_energy_data():
 def build_rse_analyst_llms(temp, max_tokens):
     llms = []
     groq_key = get_optional_secret("GROQ_API_KEY")
-    if groq_key:
+    if groq_key and ChatGroq is not None:
         llms.append(
             (
                 f"Groq / {RSE_ANALYST_GROQ_MODEL}",
@@ -327,7 +341,7 @@ def build_rse_analyst_llms(temp, max_tokens):
         )
 
     mistral_key = get_optional_secret("MISTRAL_API_KEY")
-    if mistral_key:
+    if mistral_key and ChatMistralAI is not None:
         llms.append(
             (
                 "Mistral / mistral-large-latest",
