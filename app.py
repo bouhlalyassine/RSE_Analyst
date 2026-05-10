@@ -1,5 +1,6 @@
 #  .venv/Scripts/Activate.ps1
 #  python -m streamlit run app.py
+#  git add .    # git commit -m "Màj"   # git push -u origin master
 
 import pandas as pd
 import streamlit as st
