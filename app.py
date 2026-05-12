@@ -256,7 +256,7 @@ else:
         <div style="background-color:#ddeee3; color:#167232; padding:15px; border-radius:5px; margin-bottom:15px">
             <span style="font-size:18px;"><u><b>Presentation :</b></u></span>
             <ul style="list-style-type:none; margin:0;">
-                <li><span style="font-size:17px;"><b>RSE Analyst est un agent IA specialise dans l'analyse de donnees Energie, capable d'effectuer des calculs complexes et de generer des graphiques.</b></span></li>
+                <li><span style="font-size:17px;"><b>RSE Analyst est un agent IA specialise dans l'analyse de donnees Energie, capable d'effectuer des calculs complexes et de generer des graphiques et des rapports d'analyses.</b></span></li>
                 <li><span style="font-size:17px;"><i>Modele Groq : llama-3.3-70b-versatile</i></span></li>
             </ul>
         </div>
